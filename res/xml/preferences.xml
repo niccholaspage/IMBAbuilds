@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!--
+        <ListPreference
+        android:defaultValue="System Time"
+        android:dialogTitle="Screen Timeout Time"
+        android:entries="@array/screen_timeout_time"
+        android:entryValues="@array/screen_timeout_time"
+        android:key="screen_timeout_time"
+        android:title="Screen Timeout Time" />
+    -->
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="display_on_build"
+        android:title="Keep display on when viewing build" />
+
+</PreferenceScreen>

@@ -1,0 +1,213 @@
+android.support.v13.app.FragmentTabHost
+android.support.v13.app.FragmentTabHost: FragmentTabHost(android.content.Context)
+android.support.v13.app.FragmentTabHost: FragmentTabHost(android.content.Context,android.util.AttributeSet)
+android.support.v13.app.FragmentTabHost: void setup()
+android.support.v13.app.FragmentTabHost: void setup(android.content.Context,android.app.FragmentManager)
+android.support.v13.app.FragmentTabHost: void setup(android.content.Context,android.app.FragmentManager,int)
+android.support.v13.app.FragmentTabHost: void setOnTabChangedListener(android.widget.TabHost$OnTabChangeListener)
+android.support.v13.app.FragmentTabHost$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.BackStackState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.Fragment$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentActivity
+android.support.v4.app.FragmentActivity: FragmentActivity()
+android.support.v4.app.FragmentManagerState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentTabHost
+android.support.v4.app.FragmentTabHost: FragmentTabHost(android.content.Context)
+android.support.v4.app.FragmentTabHost: FragmentTabHost(android.content.Context,android.util.AttributeSet)
+android.support.v4.app.FragmentTabHost: void setup()
+android.support.v4.app.FragmentTabHost: void setup(android.content.Context,android.support.v4.app.FragmentManager)
+android.support.v4.app.FragmentTabHost: void setup(android.content.Context,android.support.v4.app.FragmentManager,int)
+android.support.v4.app.FragmentTabHost: void setOnTabChangedListener(android.widget.TabHost$OnTabChangeListener)
+android.support.v4.app.FragmentTabHost$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.content.FileProvider
+android.support.v4.content.WakefulBroadcastReceiver
+android.support.v4.view.PagerTabStrip
+android.support.v4.view.PagerTabStrip: PagerTabStrip(android.content.Context)
+android.support.v4.view.PagerTabStrip: PagerTabStrip(android.content.Context,android.util.AttributeSet)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColor(int)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColorResource(int)
+android.support.v4.view.PagerTabStrip: void setPadding(int,int,int,int)
+android.support.v4.view.PagerTabStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.PagerTabStrip: void setBackgroundColor(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundResource(int)
+android.support.v4.view.PagerTabStrip: void setDrawFullUnderline(boolean)
+android.support.v4.view.PagerTitleStrip
+android.support.v4.view.PagerTitleStrip: PagerTitleStrip(android.content.Context)
+android.support.v4.view.PagerTitleStrip: PagerTitleStrip(android.content.Context,android.util.AttributeSet)
+android.support.v4.view.PagerTitleStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTitleStrip: void setNonPrimaryAlpha(float)
+android.support.v4.view.PagerTitleStrip: void setTextColor(int)
+android.support.v4.view.PagerTitleStrip: void setTextSize(int,float)
+android.support.v4.view.PagerTitleStrip: void setGravity(int)
+android.support.v4.view.ViewPager
+android.support.v4.view.ViewPager: ViewPager(android.content.Context)
+android.support.v4.view.ViewPager: ViewPager(android.content.Context,android.util.AttributeSet)
+android.support.v4.view.ViewPager: void setAdapter(android.support.v4.view.PagerAdapter)
+android.support.v4.view.ViewPager: void setCurrentItem(int)
+android.support.v4.view.ViewPager: void setCurrentItem(int,boolean)
+android.support.v4.view.ViewPager: void setOnPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener)
+android.support.v4.view.ViewPager: void setPageTransformer(boolean,android.support.v4.view.ViewPager$PageTransformer)
+android.support.v4.view.ViewPager: void setOffscreenPageLimit(int)
+android.support.v4.view.ViewPager: void setPageMargin(int)
+android.support.v4.view.ViewPager: void setPageMarginDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.ViewPager: void setPageMarginDrawable(int)
+android.support.v4.view.ViewPager$LayoutParams
+android.support.v4.view.ViewPager$LayoutParams: ViewPager$LayoutParams(android.content.Context,android.util.AttributeSet)
+android.support.v4.view.ViewPager$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.widget.DrawerLayout
+android.support.v4.widget.DrawerLayout: DrawerLayout(android.content.Context)
+android.support.v4.widget.DrawerLayout: DrawerLayout(android.content.Context,android.util.AttributeSet)
+android.support.v4.widget.DrawerLayout: DrawerLayout(android.content.Context,android.util.AttributeSet,int)
+android.support.v4.widget.DrawerLayout: void setDrawerShadow(android.graphics.drawable.Drawable,int)
+android.support.v4.widget.DrawerLayout: void setDrawerShadow(int,int)
+android.support.v4.widget.DrawerLayout: void setScrimColor(int)
+android.support.v4.widget.DrawerLayout: void setDrawerListener(android.support.v4.widget.DrawerLayout$DrawerListener)
+android.support.v4.widget.DrawerLayout: void setDrawerLockMode(int)
+android.support.v4.widget.DrawerLayout: void setDrawerLockMode(int,int)
+android.support.v4.widget.DrawerLayout: void setDrawerLockMode(int,android.view.View)
+android.support.v4.widget.DrawerLayout$LayoutParams
+android.support.v4.widget.DrawerLayout$LayoutParams: DrawerLayout$LayoutParams(android.content.Context,android.util.AttributeSet)
+android.support.v4.widget.DrawerLayout$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.widget.SearchViewCompatIcs$MySearchView
+android.support.v4.widget.SearchViewCompatIcs$MySearchView: SearchViewCompatIcs$MySearchView(android.content.Context)
+android.support.v4.widget.SlidingPaneLayout
+android.support.v4.widget.SlidingPaneLayout: SlidingPaneLayout(android.content.Context)
+android.support.v4.widget.SlidingPaneLayout: SlidingPaneLayout(android.content.Context,android.util.AttributeSet)
+android.support.v4.widget.SlidingPaneLayout: SlidingPaneLayout(android.content.Context,android.util.AttributeSet,int)
+android.support.v4.widget.SlidingPaneLayout: void setParallaxDistance(int)
+android.support.v4.widget.SlidingPaneLayout: void setSliderFadeColor(int)
+android.support.v4.widget.SlidingPaneLayout: void setCoveredFadeColor(int)
+android.support.v4.widget.SlidingPaneLayout: void setPanelSlideListener(android.support.v4.widget.SlidingPaneLayout$PanelSlideListener)
+android.support.v4.widget.SlidingPaneLayout: void setShadowDrawable(android.graphics.drawable.Drawable)
+android.support.v4.widget.SlidingPaneLayout: void setShadowResource(int)
+android.support.v4.widget.SlidingPaneLayout$LayoutParams
+android.support.v4.widget.SlidingPaneLayout$LayoutParams: SlidingPaneLayout$LayoutParams(android.content.Context,android.util.AttributeSet)
+android.support.v4.widget.SlidingPaneLayout$SavedState: android.os.Parcelable$Creator CREATOR
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: PagerSlidingTabStrip(android.content.Context)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: PagerSlidingTabStrip(android.content.Context,android.util.AttributeSet)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: PagerSlidingTabStrip(android.content.Context,android.util.AttributeSet,int)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setViewPager(android.support.v4.view.ViewPager)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setOnPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setIndicatorColor(int)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setIndicatorColorResource(int)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setIndicatorHeight(int)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setUnderlineColor(int)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setUnderlineColorResource(int)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setDividerColor(int)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setDividerColorResource(int)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setUnderlineHeight(int)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setDividerPadding(int)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setScrollOffset(int)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setShouldExpand(boolean)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setAllCaps(boolean)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setTextSize(int)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setTextColor(int)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setTextColorResource(int)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setTypeface(android.graphics.Typeface,int)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setTabBackground(int)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip: void setTabPaddingLeftRight(int)
+com.astuetz.viewpager.extensions.PagerSlidingTabStrip$SavedState: android.os.Parcelable$Creator CREATOR
+com.astuetz.viewpager.extensions.R$attr: int dividerColor
+com.astuetz.viewpager.extensions.R$attr: int dividerPadding
+com.astuetz.viewpager.extensions.R$attr: int indicatorColor
+com.astuetz.viewpager.extensions.R$attr: int indicatorHeight
+com.astuetz.viewpager.extensions.R$attr: int scrollOffset
+com.astuetz.viewpager.extensions.R$attr: int shouldExpand
+com.astuetz.viewpager.extensions.R$attr: int tabBackground
+com.astuetz.viewpager.extensions.R$attr: int tabPaddingLeftRight
+com.astuetz.viewpager.extensions.R$attr: int textAllCaps
+com.astuetz.viewpager.extensions.R$attr: int underlineColor
+com.astuetz.viewpager.extensions.R$attr: int underlineHeight
+com.astuetz.viewpager.extensions.R$color: int background_tab_pressed
+com.astuetz.viewpager.extensions.R$drawable: int background_tab
+com.astuetz.viewpager.extensions.R$styleable: int[] PagerSlidingTabStrip
+com.astuetz.viewpager.extensions.R$styleable: int PagerSlidingTabStrip_dividerColor
+com.astuetz.viewpager.extensions.R$styleable: int PagerSlidingTabStrip_dividerPadding
+com.astuetz.viewpager.extensions.R$styleable: int PagerSlidingTabStrip_indicatorColor
+com.astuetz.viewpager.extensions.R$styleable: int PagerSlidingTabStrip_indicatorHeight
+com.astuetz.viewpager.extensions.R$styleable: int PagerSlidingTabStrip_scrollOffset
+com.astuetz.viewpager.extensions.R$styleable: int PagerSlidingTabStrip_shouldExpand
+com.astuetz.viewpager.extensions.R$styleable: int PagerSlidingTabStrip_tabBackground
+com.astuetz.viewpager.extensions.R$styleable: int PagerSlidingTabStrip_tabPaddingLeftRight
+com.astuetz.viewpager.extensions.R$styleable: int PagerSlidingTabStrip_textAllCaps
+com.astuetz.viewpager.extensions.R$styleable: int PagerSlidingTabStrip_underlineColor
+com.astuetz.viewpager.extensions.R$styleable: int PagerSlidingTabStrip_underlineHeight
+com.nicholasnassar.imbabuilds.MainActivity
+com.nicholasnassar.imbabuilds.MainActivity: MainActivity()
+com.nicholasnassar.imbabuilds.R$array: int screen_timeout_time
+com.nicholasnassar.imbabuilds.R$array: int screen_timeout_time_values
+com.nicholasnassar.imbabuilds.R$attr: int dividerColor
+com.nicholasnassar.imbabuilds.R$attr: int dividerPadding
+com.nicholasnassar.imbabuilds.R$attr: int indicatorColor
+com.nicholasnassar.imbabuilds.R$attr: int indicatorHeight
+com.nicholasnassar.imbabuilds.R$attr: int scrollOffset
+com.nicholasnassar.imbabuilds.R$attr: int shouldExpand
+com.nicholasnassar.imbabuilds.R$attr: int tabBackground
+com.nicholasnassar.imbabuilds.R$attr: int tabPaddingLeftRight
+com.nicholasnassar.imbabuilds.R$attr: int textAllCaps
+com.nicholasnassar.imbabuilds.R$attr: int underlineColor
+com.nicholasnassar.imbabuilds.R$attr: int underlineHeight
+com.nicholasnassar.imbabuilds.R$color: int background_tab_pressed
+com.nicholasnassar.imbabuilds.R$drawable: int action_search
+com.nicholasnassar.imbabuilds.R$drawable: int actionbar_bottom
+com.nicholasnassar.imbabuilds.R$drawable: int background_tab
+com.nicholasnassar.imbabuilds.R$drawable: int background_tabs
+com.nicholasnassar.imbabuilds.R$drawable: int drawer_shadow
+com.nicholasnassar.imbabuilds.R$drawable: int ic_launcher
+com.nicholasnassar.imbabuilds.R$drawable: int ic_navigation_drawer
+com.nicholasnassar.imbabuilds.R$drawable: int protoss
+com.nicholasnassar.imbabuilds.R$drawable: int tabs_pattern
+com.nicholasnassar.imbabuilds.R$drawable: int terran
+com.nicholasnassar.imbabuilds.R$drawable: int zerg
+com.nicholasnassar.imbabuilds.R$id: int action_settings
+com.nicholasnassar.imbabuilds.R$id: int build_list
+com.nicholasnassar.imbabuilds.R$id: int content_frame
+com.nicholasnassar.imbabuilds.R$id: int drawer_layout
+com.nicholasnassar.imbabuilds.R$id: int latest_builds
+com.nicholasnassar.imbabuilds.R$id: int left_drawer
+com.nicholasnassar.imbabuilds.R$id: int list_item_section_text
+com.nicholasnassar.imbabuilds.R$id: int list_item_title
+com.nicholasnassar.imbabuilds.R$id: int pager
+com.nicholasnassar.imbabuilds.R$id: int protoss_button
+com.nicholasnassar.imbabuilds.R$id: int tabs
+com.nicholasnassar.imbabuilds.R$id: int terran_button
+com.nicholasnassar.imbabuilds.R$id: int web_view
+com.nicholasnassar.imbabuilds.R$id: int zerg_button
+com.nicholasnassar.imbabuilds.R$layout: int activity_main
+com.nicholasnassar.imbabuilds.R$layout: int drawer_list_item
+com.nicholasnassar.imbabuilds.R$layout: int fragment_build
+com.nicholasnassar.imbabuilds.R$layout: int fragment_build_list
+com.nicholasnassar.imbabuilds.R$layout: int fragment_home
+com.nicholasnassar.imbabuilds.R$layout: int fragment_race
+com.nicholasnassar.imbabuilds.R$layout: int list_category
+com.nicholasnassar.imbabuilds.R$layout: int list_item
+com.nicholasnassar.imbabuilds.R$menu: int main
+com.nicholasnassar.imbabuilds.R$string: int action_search
+com.nicholasnassar.imbabuilds.R$string: int action_settings
+com.nicholasnassar.imbabuilds.R$string: int app_name
+com.nicholasnassar.imbabuilds.R$string: int drawer_close
+com.nicholasnassar.imbabuilds.R$string: int drawer_open
+com.nicholasnassar.imbabuilds.R$string: int protoss
+com.nicholasnassar.imbabuilds.R$string: int terran
+com.nicholasnassar.imbabuilds.R$string: int zerg
+com.nicholasnassar.imbabuilds.R$style: int AppBaseTheme
+com.nicholasnassar.imbabuilds.R$style: int AppTheme
+com.nicholasnassar.imbabuilds.R$style: int SideMenuText
+com.nicholasnassar.imbabuilds.R$styleable: int[] PagerSlidingTabStrip
+com.nicholasnassar.imbabuilds.R$styleable: int PagerSlidingTabStrip_dividerColor
+com.nicholasnassar.imbabuilds.R$styleable: int PagerSlidingTabStrip_dividerPadding
+com.nicholasnassar.imbabuilds.R$styleable: int PagerSlidingTabStrip_indicatorColor
+com.nicholasnassar.imbabuilds.R$styleable: int PagerSlidingTabStrip_indicatorHeight
+com.nicholasnassar.imbabuilds.R$styleable: int PagerSlidingTabStrip_scrollOffset
+com.nicholasnassar.imbabuilds.R$styleable: int PagerSlidingTabStrip_shouldExpand
+com.nicholasnassar.imbabuilds.R$styleable: int PagerSlidingTabStrip_tabBackground
+com.nicholasnassar.imbabuilds.R$styleable: int PagerSlidingTabStrip_tabPaddingLeftRight
+com.nicholasnassar.imbabuilds.R$styleable: int PagerSlidingTabStrip_textAllCaps
+com.nicholasnassar.imbabuilds.R$styleable: int PagerSlidingTabStrip_underlineColor
+com.nicholasnassar.imbabuilds.R$styleable: int PagerSlidingTabStrip_underlineHeight
+com.nicholasnassar.imbabuilds.R$xml: int preferences
+com.nicholasnassar.imbabuilds.SettingsActivity
+com.nicholasnassar.imbabuilds.SettingsActivity: SettingsActivity()

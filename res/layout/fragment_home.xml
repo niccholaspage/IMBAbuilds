@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:scrollbarStyle="outsideOverlay" >
+
+    <ImageButton
+        android:id="@+id/protoss_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:contentDescription="@+string/protoss"
+        android:paddingBottom="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/protoss" />
+
+    <ImageButton
+        android:id="@+id/terran_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@+string/terran"
+        android:paddingBottom="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/terran" />
+
+    <ImageButton
+        android:id="@+id/zerg_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentRight="true"
+        android:contentDescription="@+string/zerg"
+        android:paddingBottom="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/zerg" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:indeterminate="true"
+        android:indeterminateBehavior="repeat" />
+
+    <ListView
+        android:id="@+id/latest_builds"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/terran_button"
+        android:divider="@null"
+        android:footerDividersEnabled="false" />
+
+</RelativeLayout>
