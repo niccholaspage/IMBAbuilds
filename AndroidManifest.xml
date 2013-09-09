@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nicholasnassar.imbabuilds"
     android:versionCode="20"
-    android:versionName="1.1b" >
+    android:versionName="1.1c" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
