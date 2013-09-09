@@ -24,6 +24,8 @@ import com.nicholasnassar.imbabuilds.parser.LatestBuildsParser;
 import com.nicholasnassar.imbabuilds.parser.MatchupJSONParser;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 
 public class DataRetrieverTask extends AsyncTask<Void, Void, JSONObject> {
@@ -105,9 +107,31 @@ public class DataRetrieverTask extends AsyncTask<Void, Void, JSONObject> {
 				items.addAll(new GuidesParser().parse(result.getJSONArray("guides")).getItems());
 				
 				((MainActivity) activity.get()).updateListViews();
+			}else {
+				throw new Exception();
 			}
 		} catch (Exception e){
-
+	           AlertDialog.Builder builder = new AlertDialog.Builder(activity.get());
+	           
+	           builder.setTitle("Error");
+	           
+	           builder.setMessage("Error retrieving builds");
+	           
+	           builder.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+	              public void onClick(DialogInterface dialog, int which) {
+	                  new DataRetrieverTask(activity.get()).execute();
+	              } 
+	           });
+	           
+	           builder.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+	              public void onClick(DialogInterface dialog, int which) {
+	                 activity.get().finish();
+	              } 
+	           });
+	           
+	           AlertDialog alert = builder.create();
+	           
+	           alert.show();
 		}
 	}
 
