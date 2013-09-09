@@ -8,9 +8,9 @@ import com.nicholasnassar.imbabuilds.fragments.BlankFragment;
 import com.nicholasnassar.imbabuilds.fragments.BuildFragment;
 import com.nicholasnassar.imbabuilds.fragments.GuidesFragment;
 import com.nicholasnassar.imbabuilds.fragments.HomeFragment;
-import com.nicholasnassar.imbabuilds.fragments.MatchupSectionFragment;
 import com.nicholasnassar.imbabuilds.fragments.RaceFragment;
 import com.nicholasnassar.imbabuilds.fragments.TitledFragment;
+import com.nicholasnassar.imbabuilds.fragments.UpdatableListFragment;
 
 import android.app.ActionBar;
 import android.content.res.Configuration;
@@ -430,12 +430,8 @@ public class MainActivity extends FragmentActivity {
 	public void updateListViews(){
 		Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.content_frame);
 		
-		if (fragment instanceof HomeFragment){
-			((HomeFragment) fragment).updateListView();
-		}else if (fragment instanceof MatchupSectionFragment){
-			((MatchupSectionFragment) fragment).updateListView();
-		}else if (fragment instanceof GuidesFragment){
-			((GuidesFragment) fragment).updateListView();
+		if (fragment instanceof UpdatableListFragment){
+			((UpdatableListFragment) fragment).updateListView();
 		}
 	}
 }

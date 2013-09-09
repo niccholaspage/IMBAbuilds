@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-public class GuidesFragment extends ListFragment {
+public class GuidesFragment extends ListFragment implements UpdatableListFragment {
 	private ArrayList<Item> items;
 
 	@Override

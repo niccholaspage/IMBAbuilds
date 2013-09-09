@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
-public class MatchupSectionFragment extends ListFragment {
+public class MatchupSectionFragment extends ListFragment implements UpdatableListFragment {
 	public static final String ARG_SECTION_RACE = "section_race";
 
 	public static final String ARG_SECTION_OPPONENT = "section_opponent";

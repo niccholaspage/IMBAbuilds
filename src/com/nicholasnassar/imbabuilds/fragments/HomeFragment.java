@@ -18,7 +18,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements UpdatableListFragment {
 	private ListView listView;
 
 	@Override
