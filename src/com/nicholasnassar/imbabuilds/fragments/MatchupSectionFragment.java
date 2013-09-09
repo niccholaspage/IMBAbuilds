@@ -36,7 +36,7 @@ public class MatchupSectionFragment extends ListFragment implements UpdatableLis
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.fragment_build_list, container, false);
 	}
-	
+
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		updateListView();
@@ -66,13 +66,13 @@ public class MatchupSectionFragment extends ListFragment implements UpdatableLis
 
 	public void updateListView(){
 		items = Race.getItems(getRace(), getOpponent());
-		
+
 		if (!items.isEmpty()){
 			((View) getView().findViewById(R.id.progressBar)).setVisibility(View.INVISIBLE);
 		}
 
 		setListAdapter(new EntryAdapter(getActivity(), items));
-		
+
 		getListView().setTextFilterEnabled(true);
 	}
 }

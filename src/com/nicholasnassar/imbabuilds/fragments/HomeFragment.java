@@ -54,7 +54,7 @@ public class HomeFragment extends Fragment implements UpdatableListFragment {
 
 	public void updateListView(){
 		final ArrayList<Item> items = Race.getLatestBuilds();
-		
+
 		if (!items.isEmpty()){
 			((View) getView().findViewById(R.id.progressBar)).setVisibility(View.INVISIBLE);
 		}
@@ -62,7 +62,6 @@ public class HomeFragment extends Fragment implements UpdatableListFragment {
 		listView.setAdapter(new EntryAdapter(getActivity(), items));
 
 		listView.setOnItemClickListener(new OnItemClickListener(){
-
 			@Override
 			public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 				Item item = items.get(position);
