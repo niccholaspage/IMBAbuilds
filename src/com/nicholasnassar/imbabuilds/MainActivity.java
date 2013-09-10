@@ -403,7 +403,7 @@ public class MainActivity extends FragmentActivity {
 		return Race.values()[mDrawer.getCheckedItemPosition() - 1];
 	}
 
-	public void showBuild(Item item){
+	public void showBuild(Item item, boolean overview){
 		setTitle(item.getTitle());
 
 		changeColor(item.getColor());
@@ -414,7 +414,7 @@ public class MainActivity extends FragmentActivity {
 
 		FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-		transaction.replace(R.id.content_frame, BuildFragment.newInstance(item));
+		transaction.replace(R.id.content_frame, BuildFragment.newInstance(item, overview));
 
 		transaction.addToBackStack(null);
 

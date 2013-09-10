@@ -78,7 +78,7 @@ public class HomeFragment extends Fragment implements UpdatableListFragment {
 					}
 				}
 
-				((MainActivity) getActivity()).showBuild(item);
+				((MainActivity) getActivity()).showBuild(item, true);
 			}
 		});
 	}

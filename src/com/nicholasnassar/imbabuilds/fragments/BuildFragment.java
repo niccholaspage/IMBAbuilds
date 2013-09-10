@@ -91,7 +91,7 @@ public class BuildFragment extends Fragment implements TitledFragment, SharedPre
 		return true;
 	}
 
-	public static BuildFragment newInstance(Item item){
+	public static BuildFragment newInstance(Item item, boolean overview){
 		BuildFragment fragment = new BuildFragment();
 
 		Bundle args = new Bundle();
@@ -100,6 +100,8 @@ public class BuildFragment extends Fragment implements TitledFragment, SharedPre
 
 		args.putString("text", item.getText());
 
+		args.putBoolean("overview", overview);
+
 		fragment.setArguments(args);
 
 		return fragment;
@@ -107,7 +109,9 @@ public class BuildFragment extends Fragment implements TitledFragment, SharedPre
 
 	private String parseText(String text){
 		//General Overview beginning
-		text = "<h3>General Overview</h3>" + text;
+		if (getArguments().getBoolean("overview")){
+			text = "<h3>General Overview</h3>" + text;
+		}
 
 		//Category start and ends - h3 tags
 		text = text.replace("%cs", "<h3>").replace("%ce", "</h3>");

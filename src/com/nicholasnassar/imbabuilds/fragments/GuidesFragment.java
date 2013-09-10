@@ -25,7 +25,7 @@ public class GuidesFragment extends ListFragment implements UpdatableListFragmen
 
 	@Override
 	public void onListItemClick(ListView listView, View view, int position, long id){
-		((MainActivity) getActivity()).showBuild(items.get(position));
+		((MainActivity) getActivity()).showBuild(items.get(position), false);
 	}
 
 	@Override

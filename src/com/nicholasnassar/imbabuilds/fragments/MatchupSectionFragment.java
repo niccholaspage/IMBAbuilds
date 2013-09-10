@@ -29,7 +29,7 @@ public class MatchupSectionFragment extends ListFragment implements UpdatableLis
 
 	@Override
 	public void onListItemClick(ListView listView, View view, int position, long id){
-		((MainActivity) getActivity()).showBuild(items.get(position));
+		((MainActivity) getActivity()).showBuild(items.get(position), true);
 	}
 
 	@Override
