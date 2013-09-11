@@ -109,7 +109,7 @@ public class BuildFragment extends Fragment implements TitledFragment, SharedPre
 
 	private String parseText(String text){
 		//General Overview beginning
-		if (getArguments().getBoolean("overview")){
+		if (getArguments().getBoolean("overview") || text.contains("%go")){
 			text = "<h3>General Overview</h3>" + text;
 		}
 

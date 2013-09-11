@@ -41,12 +41,12 @@ public class DataRetrieverTask extends AsyncTask<Void, Void, JSONObject> {
 
 	@Override
 	protected JSONObject doInBackground(Void... args) {
+		File dataFile = new File(activity.get().getCacheDir(), "data.json");
+
+		File versionFile = new File(activity.get().getCacheDir(), "data.version");
+		
 		try {
 			String data = "";
-
-			File dataFile = new File(activity.get().getCacheDir(), "data.json");
-
-			File versionFile = new File(activity.get().getCacheDir(), "data.version");
 
 			if (dataFile.exists()){
 				String currentVersion = getFileContents(versionFile);
@@ -68,6 +68,10 @@ public class DataRetrieverTask extends AsyncTask<Void, Void, JSONObject> {
 
 			return new JSONObject(data);
 		} catch (Exception e) {
+			dataFile.delete();
+			
+			versionFile.delete();
+			
 			return null;
 		}
 	}
