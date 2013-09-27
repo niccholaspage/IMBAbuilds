@@ -9,5 +9,9 @@
     <string name="protoss">Protoss</string>
     <string name="terran">Terran</string>
     <string name="zerg">Zerg</string>
+    <string name="retrieve_builds_dialog_title">Error retrieving builds</string>
+    <string name="retrieve_builds_dialog_text">There was an error retrieving builds. Connect to the internet and try again.</string>
+    <string name="retrieve_builds_dialog_positive_button">Retry</string>
+    <string name="retrieve_builds_dialog_negative_button">Exit</string>
 
 </resources>

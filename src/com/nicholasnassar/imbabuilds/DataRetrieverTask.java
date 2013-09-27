@@ -117,17 +117,17 @@ public class DataRetrieverTask extends AsyncTask<Void, Void, JSONObject> {
 		} catch (Exception e){
 			AlertDialog.Builder builder = new AlertDialog.Builder(activity.get());
 
-			builder.setTitle("Error");
+			builder.setTitle(activity.get().getString(R.string.retrieve_builds_dialog_title));
 
-			builder.setMessage("Error retrieving builds");
+			builder.setMessage(activity.get().getString(R.string.retrieve_builds_dialog_text));
 
-			builder.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+			builder.setPositiveButton(activity.get().getString(R.string.retrieve_builds_dialog_positive_button), new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 					new DataRetrieverTask(activity.get()).execute();
 				} 
 			});
 
-			builder.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+			builder.setNegativeButton(activity.get().getString(R.string.retrieve_builds_dialog_negative_button), new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int which) {
 					activity.get().finish();
 				} 
