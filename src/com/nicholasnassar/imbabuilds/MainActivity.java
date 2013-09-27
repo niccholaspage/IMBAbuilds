@@ -75,7 +75,7 @@ public class MainActivity extends FragmentActivity {
 
 		Race[] races = Race.values();
 
-		options = new String[races.length + 2];
+		options = new String[races.length + 1];
 
 		options[0] = "Home";
 
@@ -85,7 +85,7 @@ public class MainActivity extends FragmentActivity {
 			options[i + 1] = races[i].toString();
 		}
 
-		options[i + 1] = "Guides";
+		//options[i + 1] = "Guides";
 
 		mDrawer.setAdapter(new DrawerArrayAdapter(this, R.layout.drawer_list_item, options));
 
