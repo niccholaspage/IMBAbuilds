@@ -1,7 +1,5 @@
 package com.nicholasnassar.imbabuilds;
 
-import org.json.JSONObject;
-
 import com.nicholasnassar.imbabuilds.adapter.DrawerArrayAdapter;
 import com.nicholasnassar.imbabuilds.adapter.Item;
 import com.nicholasnassar.imbabuilds.fragments.BlankFragment;
@@ -50,8 +48,6 @@ public class MainActivity extends FragmentActivity {
 
 	private Drawable oldBackground = null;
 	private int currentColor = 0xFF666666;
-
-	private JSONObject jsonData;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -143,9 +139,7 @@ public class MainActivity extends FragmentActivity {
 		if (savedInstanceState == null) {
 			selectItem(0);
 
-			if (jsonData == null){
-				new DataRetrieverTask(this).execute();
-			}
+			refresh();
 		}else {
 			lastItem = savedInstanceState.getInt("last_item");
 
@@ -206,10 +200,6 @@ public class MainActivity extends FragmentActivity {
 		getActionBar().setDisplayShowTitleEnabled(true);
 
 		currentColor = newColor;
-	}
-
-	public JSONObject getJSONData(){
-		return jsonData;
 	}
 
 	@Override
@@ -426,12 +416,16 @@ public class MainActivity extends FragmentActivity {
 	public void setLastItem(int lastItem){
 		this.lastItem = lastItem;
 	}
-	
+
 	public void updateListViews(){
 		Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.content_frame);
-		
+
 		if (fragment instanceof UpdatableListFragment){
 			((UpdatableListFragment) fragment).updateListView();
 		}
+	}
+
+	private void refresh(){
+		new DataRetrieverTask(this).execute();
 	}
 }

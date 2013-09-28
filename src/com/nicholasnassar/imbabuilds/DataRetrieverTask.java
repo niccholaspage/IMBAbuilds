@@ -29,7 +29,7 @@ import android.content.DialogInterface;
 import android.os.AsyncTask;
 
 public class DataRetrieverTask extends AsyncTask<Void, Void, JSONObject> {
-	private final WeakReference<Activity> activity;
+	private WeakReference<Activity> activity;
 
 	private static final String DATA_URL = "http://74.91.113.69/imbabuilds/data.json";
 
