@@ -11,6 +11,8 @@ import com.nicholasnassar.imbabuilds.fragments.TitledFragment;
 import com.nicholasnassar.imbabuilds.fragments.UpdatableListFragment;
 
 import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -48,6 +50,14 @@ public class MainActivity extends FragmentActivity {
 
 	private Drawable oldBackground = null;
 	private int currentColor = 0xFF666666;
+	
+	private int status = OK;
+	
+	private static final int OK = 0;
+	
+	private static final int ERROR = 1;
+	
+	private AlertDialog dialog = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -147,6 +157,8 @@ public class MainActivity extends FragmentActivity {
 
 			changeColor(currentColor);
 
+			status = savedInstanceState.getInt("status");
+			
 			setTitle(savedInstanceState.getCharSequence("title"));
 		}
 
@@ -156,6 +168,30 @@ public class MainActivity extends FragmentActivity {
 			mDrawerToggle.setDrawerIndicatorEnabled(false);
 		}else {
 			mDrawerToggle.setDrawerIndicatorEnabled(true);
+		}
+	}
+	
+	@Override
+	protected void onResume(){
+		super.onResume();
+		
+		DataRetrieverTask task = ((MainApplication) getApplication()).getCurrentTask();
+		
+		if (task != null){
+			task.setActivity(this);
+		}
+		
+		if (status == ERROR){
+			showAlert();
+		}
+	}
+	
+	@Override
+	protected void onPause(){
+		super.onPause();
+		
+		if (dialog != null){
+			dialog.dismiss();
 		}
 	}
 
@@ -211,6 +247,8 @@ public class MainActivity extends FragmentActivity {
 		outState.putInt("last_item", lastItem);
 
 		outState.putInt("currentColor", currentColor);
+		
+		outState.putInt("status", status);
 
 		outState.putCharSequence("title", mTitle);
 	}
@@ -417,15 +455,63 @@ public class MainActivity extends FragmentActivity {
 		this.lastItem = lastItem;
 	}
 
-	public void updateListViews(){
+	public void updateBuilds(){
 		Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.content_frame);
 
 		if (fragment instanceof UpdatableListFragment){
 			((UpdatableListFragment) fragment).updateListView();
 		}
+		
+		if (Race.getLatestBuilds().isEmpty()){
+			status = ERROR;
+			
+			showAlert();
+		}else {
+			status = OK;
+		}
 	}
 
 	private void refresh(){
-		new DataRetrieverTask(this).execute();
+		if (((MainApplication) getApplication()).getCurrentTask() != null){
+			return;
+		}
+		
+		DataRetrieverTask task = new DataRetrieverTask(this);
+		
+		((MainApplication) getApplication()).setCurrentTask(task);
+		
+		task.execute();
+	}
+	
+	public void showAlert(){
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+		builder.setTitle(getString(R.string.retrieve_builds_dialog_title));
+
+		builder.setMessage(getString(R.string.retrieve_builds_dialog_text));
+
+		builder.setPositiveButton(getString(R.string.retrieve_builds_dialog_positive_button), new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				DataRetrieverTask task = new DataRetrieverTask(MainActivity.this);
+				
+				((MainApplication) getApplication()).setCurrentTask(task);
+				
+				task.execute();
+			} 
+		});
+
+		builder.setNegativeButton(getString(R.string.retrieve_builds_dialog_negative_button), new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				finish();
+			} 
+		});
+
+		builder.setCancelable(false);
+
+		AlertDialog alert = builder.create();
+
+		dialog = alert;
+		
+		alert.show();
 	}
 }

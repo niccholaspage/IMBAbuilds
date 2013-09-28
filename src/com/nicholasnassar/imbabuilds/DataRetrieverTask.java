@@ -24,8 +24,6 @@ import com.nicholasnassar.imbabuilds.parser.LatestBuildsParser;
 import com.nicholasnassar.imbabuilds.parser.MatchupJSONParser;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.AsyncTask;
 
 public class DataRetrieverTask extends AsyncTask<Void, Void, JSONObject> {
@@ -109,36 +107,14 @@ public class DataRetrieverTask extends AsyncTask<Void, Void, JSONObject> {
 				items.clear();
 
 				items.addAll(new GuidesParser().parse(result.getJSONArray("guides")).getItems());
-
-				((MainActivity) activity.get()).updateListViews();
 			}else {
 				throw new Exception();
 			}
 		} catch (Exception e){
-			AlertDialog.Builder builder = new AlertDialog.Builder(activity.get());
-
-			builder.setTitle(activity.get().getString(R.string.retrieve_builds_dialog_title));
-
-			builder.setMessage(activity.get().getString(R.string.retrieve_builds_dialog_text));
-
-			builder.setPositiveButton(activity.get().getString(R.string.retrieve_builds_dialog_positive_button), new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					new DataRetrieverTask(activity.get()).execute();
-				} 
-			});
-
-			builder.setNegativeButton(activity.get().getString(R.string.retrieve_builds_dialog_negative_button), new DialogInterface.OnClickListener() {
-				public void onClick(DialogInterface dialog, int which) {
-					activity.get().finish();
-				} 
-			});
-
-			builder.setCancelable(false);
-
-			AlertDialog alert = builder.create();
-
-			alert.show();
+			
 		}
+		
+		((MainActivity) activity.get()).updateBuilds();
 	}
 
 	private String downloadAndReplaceFile(File file, String url) throws Exception {
@@ -215,5 +191,9 @@ public class DataRetrieverTask extends AsyncTask<Void, Void, JSONObject> {
 		} catch (Exception e) {
 			return null;
 		}
+	}
+	
+	public void setActivity(Activity activity){
+		this.activity = new WeakReference<Activity>(activity);
 	}
 }
