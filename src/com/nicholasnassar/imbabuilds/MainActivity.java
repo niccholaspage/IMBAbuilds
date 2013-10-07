@@ -91,6 +91,7 @@ public class MainActivity extends FragmentActivity {
 			options[i + 1] = races[i].toString();
 		}
 
+		//TODO: Implement Guides:
 		//options[i + 1] = "Guides";
 
 		mDrawer.setAdapter(new DrawerArrayAdapter(this, R.layout.drawer_list_item, options));
