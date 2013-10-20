@@ -68,13 +68,13 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-		
+
 		if (preferences.getBoolean("night_mode", false)){
 			setTheme(android.R.style.Theme_Holo);
 		}else {
 			setTheme(android.R.style.Theme_Holo_Light_DarkActionBar);
 		}
-		
+
 		setContentView(R.layout.activity_main);
 
 		final ActionBar actionBar = getActionBar();
@@ -196,6 +196,12 @@ public class MainActivity extends FragmentActivity {
 		}
 	}
 
+	private void removeAds(){
+		LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
+
+		contentView.removeView(contentView.findViewById(R.id.adview));
+	}
+
 	@Override
 	protected void onResume(){
 		super.onResume();
@@ -213,11 +219,9 @@ public class MainActivity extends FragmentActivity {
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 		if (preferences.getBoolean("ads", false)){
-			
+			showAds();
 		}else {
-			LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
-
-			contentView.removeView(contentView.findViewById(R.id.adview));
+			removeAds();
 		}
 	}
 
@@ -361,8 +365,14 @@ public class MainActivity extends FragmentActivity {
 		setTitle(options[position]);
 
 		getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+		LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
 		
-		showAds();
+		View adsView = contentView.findViewById(R.id.adview);
+
+		if (adsView != null){
+			adsView.setVisibility(View.VISIBLE);
+		}
 	}
 
 	private void calculateColor(int position){
@@ -437,7 +447,7 @@ public class MainActivity extends FragmentActivity {
 		getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit();
 
 		showAds();
-		
+
 		return fragment;
 	}
 
@@ -488,10 +498,14 @@ public class MainActivity extends FragmentActivity {
 		transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 
 		transaction.commit();
-		
+
 		LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
 
-		contentView.removeView(contentView.findViewById(R.id.adview));
+		View adsView = contentView.findViewById(R.id.adview);
+
+		if (adsView != null){
+			adsView.setVisibility(View.INVISIBLE);
+		}
 	}
 
 	public void setLastItem(int lastItem){
