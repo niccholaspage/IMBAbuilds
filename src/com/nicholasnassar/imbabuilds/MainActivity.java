@@ -163,8 +163,6 @@ public class MainActivity extends FragmentActivity {
 			selectItem(0);
 
 			refresh();
-
-			showAds();
 		}else {
 			lastItem = savedInstanceState.getInt("last_item");
 
@@ -215,7 +213,7 @@ public class MainActivity extends FragmentActivity {
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 		if (preferences.getBoolean("ads", false)){
-			showAds();
+			
 		}else {
 			LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
 
@@ -363,6 +361,8 @@ public class MainActivity extends FragmentActivity {
 		setTitle(options[position]);
 
 		getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		
+		showAds();
 	}
 
 	private void calculateColor(int position){
@@ -436,6 +436,8 @@ public class MainActivity extends FragmentActivity {
 
 		getSupportFragmentManager().beginTransaction().replace(R.id.content_frame, fragment).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit();
 
+		showAds();
+		
 		return fragment;
 	}
 
@@ -486,6 +488,10 @@ public class MainActivity extends FragmentActivity {
 		transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 
 		transaction.commit();
+		
+		LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
+
+		contentView.removeView(contentView.findViewById(R.id.adview));
 	}
 
 	public void setLastItem(int lastItem){
