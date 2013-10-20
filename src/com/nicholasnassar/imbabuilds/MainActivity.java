@@ -68,13 +68,13 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-
+		
 		if (preferences.getBoolean("night_mode", false)){
 			setTheme(android.R.style.Theme_Holo);
 		}else {
 			setTheme(android.R.style.Theme_Holo_Light_DarkActionBar);
 		}
-
+		
 		setContentView(R.layout.activity_main);
 
 		final ActionBar actionBar = getActionBar();
