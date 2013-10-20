@@ -15,6 +15,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -187,9 +188,7 @@ public class MainActivity extends FragmentActivity {
 	private void showAds(){
 		LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
 
-		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-		if (preferences.getBoolean("ads", false) && contentView.findViewById(R.id.adview) == null){
+		if (!isPro() && contentView.findViewById(R.id.adview) == null){
 			View view = getLayoutInflater().inflate(R.layout.ad, null, false);
 
 			contentView.addView(view);
@@ -200,6 +199,10 @@ public class MainActivity extends FragmentActivity {
 		LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
 
 		contentView.removeView(contentView.findViewById(R.id.adview));
+	}
+	
+	private boolean isPro(){
+		return getPackageManager().checkSignatures(getPackageName(), "com.nicholasnassar.imbabuildsprounlocker") == PackageManager.SIGNATURE_MATCH;
 	}
 
 	@Override
@@ -216,9 +219,7 @@ public class MainActivity extends FragmentActivity {
 			showAlert();
 		}
 
-		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-
-		if (preferences.getBoolean("ads", false)){
+		if (!isPro()){
 			showAds();
 		}else {
 			removeAds();

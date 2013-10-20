@@ -10,11 +10,5 @@
         android:defaultValue="false"
         android:key="display_on_build"
         android:title="Keep display on when viewing build" />
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="ads"
-        android:summaryOff="Check this box to enable ads to support the IMBAbuilds team"
-        android:summaryOn="Thanks for supporting the IMBAbuilds team!"
-        android:title="Ads" />
 
 </PreferenceScreen>
