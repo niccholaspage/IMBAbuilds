@@ -504,7 +504,7 @@ public class MainActivity extends FragmentActivity {
 		View adsView = contentView.findViewById(R.id.adview);
 
 		if (adsView != null){
-			adsView.setVisibility(View.INVISIBLE);
+			adsView.setVisibility(View.GONE);
 		}
 	}
 
