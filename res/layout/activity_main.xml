@@ -3,10 +3,18 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <FrameLayout
-        android:id="@+id/content_frame"
+    <LinearLayout
+        android:id="@+id/content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:id="@+id/content_frame"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
 
     <!-- The navigation drawer -->
 

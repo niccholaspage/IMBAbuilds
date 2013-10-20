@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <!--
-        <ListPreference
-        android:defaultValue="System Time"
-        android:dialogTitle="Screen Timeout Time"
-        android:entries="@array/screen_timeout_time"
-        android:entryValues="@array/screen_timeout_time"
-        android:key="screen_timeout_time"
-        android:title="Screen Timeout Time" />
-    -->
-
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="night_mode"
+        android:summary="Use a dark theme throughout the app (IMBAbuilds must be restarted for this to take in effect)"
+        android:title="Night Mode" />
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="display_on_build"
         android:title="Keep display on when viewing build" />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="ads"
+        android:summaryOff="Check this box to enable ads to support the IMBAbuilds team"
+        android:summaryOn="Thanks for supporting the IMBAbuilds team!"
+        android:title="Ads" />
 
 </PreferenceScreen>

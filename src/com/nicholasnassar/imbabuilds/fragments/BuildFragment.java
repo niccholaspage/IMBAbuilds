@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.webkit.WebView;
 
-public class BuildFragment extends Fragment implements TitledFragment, SharedPreferences.OnSharedPreferenceChangeListener {
+public class BuildFragment extends Fragment implements TitledFragment {
 	private String title;
 
 	private String text;
@@ -35,13 +35,18 @@ public class BuildFragment extends Fragment implements TitledFragment, SharedPre
 
 			text = savedInstanceState.getString("text");
 		}
+	}
+
+	@Override
+	public void onResume(){
+		super.onResume();
 
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
-		preferences.registerOnSharedPreferenceChangeListener(this);
-
 		if (preferences.getBoolean("display_on_build", false)){
 			getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+		}else {
+			getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 		}
 	}
 
@@ -156,14 +161,5 @@ public class BuildFragment extends Fragment implements TitledFragment, SharedPre
 		text = text.replace("\n", "<br />");
 
 		return text;
-	}
-
-	@Override
-	public void onSharedPreferenceChanged(SharedPreferences preferences, String key) {
-		if (preferences.getBoolean("display_on_build", false)){
-			getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		}else {
-			getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-		}
 	}
 }

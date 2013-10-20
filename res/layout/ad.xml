@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.grvyhjmv.ztzepegc163896.AdView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:airpush="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/adview"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_gravity="center_horizontal"
+    airpush:animation="fade"
+    airpush:banner_type="inappad"
+    airpush:canShowMR="false"
+    airpush:placementType="interstitial"
+    airpush:test_mode="false" />

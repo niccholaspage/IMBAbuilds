@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nicholasnassar.imbabuilds"
-    android:versionCode="24"
-    android:versionName="1.1.1" >
+    android:versionCode="25"
+    android:versionName="1.2" >
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -29,6 +31,17 @@
             android:name=".SettingsActivity"
             android:label="@string/action_settings" >
         </activity>
+
+        <meta-data
+            android:name="com.grvyhjmv.ztzepegc163896.APPID"
+            android:value="183981" />
+        <meta-data
+            android:name="com.grvyhjmv.ztzepegc163896.APIKEY"
+            android:value="android*1382224540163896275" />
+
+        <activity
+            android:name="com.grvyhjmv.ztzepegc163896.BrowserActivity"
+            android:configChanges="orientation|screenSize" />
     </application>
 
 </manifest>
