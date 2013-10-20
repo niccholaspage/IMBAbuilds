@@ -366,13 +366,13 @@ public class MainActivity extends FragmentActivity {
 
 		getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
-		LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
+		/*LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
 		
 		View adsView = contentView.findViewById(R.id.adview);
 
 		if (adsView != null){
 			adsView.setVisibility(View.VISIBLE);
-		}
+		}*/
 	}
 
 	private void calculateColor(int position){
