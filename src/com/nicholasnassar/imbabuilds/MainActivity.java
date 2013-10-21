@@ -188,7 +188,7 @@ public class MainActivity extends FragmentActivity {
 	private void showAds(){
 		LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
 
-		if (!isPro() && contentView.findViewById(R.id.adview) == null){
+		if (!isPro() && contentView.findViewById(R.id.adView) == null){
 			View view = getLayoutInflater().inflate(R.layout.ad, null, false);
 
 			contentView.addView(view);
@@ -198,7 +198,7 @@ public class MainActivity extends FragmentActivity {
 	private void removeAds(){
 		LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
 
-		contentView.removeView(contentView.findViewById(R.id.adview));
+		contentView.removeView(contentView.findViewById(R.id.adView));
 	}
 	
 	private boolean isPro(){
@@ -218,7 +218,7 @@ public class MainActivity extends FragmentActivity {
 		if (status == ERROR){
 			showAlert();
 		}
-
+		
 		if (!isPro()){
 			showAds();
 		}else {
@@ -366,14 +366,6 @@ public class MainActivity extends FragmentActivity {
 		setTitle(options[position]);
 
 		getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
-		/*LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
-		
-		View adsView = contentView.findViewById(R.id.adview);
-
-		if (adsView != null){
-			adsView.setVisibility(View.VISIBLE);
-		}*/
 	}
 
 	private void calculateColor(int position){
@@ -499,14 +491,6 @@ public class MainActivity extends FragmentActivity {
 		transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 
 		transaction.commit();
-
-		LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
-
-		View adsView = contentView.findViewById(R.id.adview);
-
-		if (adsView != null){
-			adsView.setVisibility(View.GONE);
-		}
 	}
 
 	public void setLastItem(int lastItem){
