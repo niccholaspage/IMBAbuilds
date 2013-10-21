@@ -11,13 +11,13 @@ import android.view.MenuItem;
 public class SettingsActivity extends PreferenceActivity {
 	public void onCreate(Bundle savedInstanceState){
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-		
+
 		if (preferences.getBoolean("night_mode", false)){
 			setTheme(android.R.style.Theme_Holo);
 		}else {
 			setTheme(android.R.style.Theme_Holo_Light_DarkActionBar);
 		}
-		
+
 		super.onCreate(savedInstanceState);
 
 		getActionBar().setDisplayHomeAsUpEnabled(true);
