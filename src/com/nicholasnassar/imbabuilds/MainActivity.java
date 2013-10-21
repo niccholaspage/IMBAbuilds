@@ -4,7 +4,6 @@ import com.nicholasnassar.imbabuilds.adapter.DrawerArrayAdapter;
 import com.nicholasnassar.imbabuilds.adapter.Item;
 import com.nicholasnassar.imbabuilds.fragments.BlankFragment;
 import com.nicholasnassar.imbabuilds.fragments.BuildFragment;
-import com.nicholasnassar.imbabuilds.fragments.GuidesFragment;
 import com.nicholasnassar.imbabuilds.fragments.HomeFragment;
 import com.nicholasnassar.imbabuilds.fragments.RaceFragment;
 import com.nicholasnassar.imbabuilds.fragments.TitledFragment;
@@ -432,7 +431,9 @@ public class MainActivity extends FragmentActivity {
 		if (mDrawer.getCheckedItemPosition() == 0){
 			fragment = new HomeFragment();
 		}else if (mDrawer.getCheckedItemPosition() == 4){
-			fragment = GuidesFragment.newInstance();
+			//fragment = GuidesFragment.newInstance();
+			//TODO: Guides
+			fragment = new BlankFragment();
 		} else {
 			fragment = RaceFragment.newInstance(getRace());
 		}
@@ -504,7 +505,7 @@ public class MainActivity extends FragmentActivity {
 			((UpdatableListFragment) fragment).updateListView();
 		}
 
-		if (Race.getLatestBuilds().isEmpty()){
+		if (((MainApplication) getApplication()).getLatestBuilds().isEmpty()){
 			status = ERROR;
 
 			showAlert();

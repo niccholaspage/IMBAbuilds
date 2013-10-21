@@ -19,7 +19,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.nicholasnassar.imbabuilds.adapter.Item;
-import com.nicholasnassar.imbabuilds.parser.GuidesParser;
 import com.nicholasnassar.imbabuilds.parser.LatestBuildsParser;
 import com.nicholasnassar.imbabuilds.parser.MatchupJSONParser;
 
@@ -82,7 +81,7 @@ public class DataRetrieverTask extends AsyncTask<Void, Void, JSONObject> {
 
 				array = result.getJSONArray("latestbuilds");
 
-				ArrayList<Item> items = Race.getLatestBuilds();
+				ArrayList<Item> items = ((MainApplication) activity.get().getApplication()).getLatestBuilds();
 
 				items.clear();
 
@@ -94,19 +93,13 @@ public class DataRetrieverTask extends AsyncTask<Void, Void, JSONObject> {
 
 						array = result.getJSONArray(category);
 
-						items = Race.getItems(race, opponent);
+						items = ((MainApplication) activity.get().getApplication()).getBuilds(category);
 
 						items.clear();
 
 						items.addAll(new MatchupJSONParser().parse(array, race).getItems());
 					}
 				}
-
-				items = Race.getGuideBuilds();
-
-				items.clear();
-
-				items.addAll(new GuidesParser().parse(result.getJSONArray("guides")).getItems());
 			}else {
 				throw new Exception();
 			}

@@ -1,11 +1,6 @@
 package com.nicholasnassar.imbabuilds;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
-
-import com.nicholasnassar.imbabuilds.adapter.Item;
 
 public enum Race {
 	PROTOSS(0xFF1DA6DC, R.drawable.protoss),
@@ -15,12 +10,6 @@ public enum Race {
 	private final int color;
 
 	private final int drawable;
-
-	private final static Map<String, ArrayList<Item>> items;
-
-	private final static ArrayList<Item> latestBuilds;
-
-	private final static ArrayList<Item> guideBuilds;
 
 	private Race(int color, int drawable){
 		this.color = color;
@@ -58,20 +47,6 @@ public enum Race {
 		return drawable;
 	}
 
-	static {
-		items = new HashMap<String, ArrayList<Item>>();
-
-		latestBuilds = new ArrayList<Item>();
-
-		guideBuilds = new ArrayList<Item>();
-
-		for (Race race : values()){
-			for (Race opponent : values()){
-				items.put(getMatchup(race, opponent), new ArrayList<Item>());
-			}
-		}
-	}
-
 	public static Race getRaceFromFirstLetter(String letter){
 		for (Race race : values()){
 			if (race.getFirstLetter().equalsIgnoreCase(letter)){
@@ -98,17 +73,5 @@ public enum Race {
 		races[1] = getRaceFromFirstLetter(raceStrings[1]);
 
 		return races;
-	}
-
-	public static ArrayList<Item> getItems(Race race, Race opponent){
-		return items.get(getMatchup(race, opponent));
-	}
-
-	public static ArrayList<Item> getLatestBuilds(){
-		return latestBuilds;
-	}
-	
-	public static ArrayList<Item> getGuideBuilds(){
-		return guideBuilds;
 	}
 }

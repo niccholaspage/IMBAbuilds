@@ -3,6 +3,7 @@ package com.nicholasnassar.imbabuilds.fragments;
 import java.util.ArrayList;
 
 import com.nicholasnassar.imbabuilds.MainActivity;
+import com.nicholasnassar.imbabuilds.MainApplication;
 import com.nicholasnassar.imbabuilds.R;
 import com.nicholasnassar.imbabuilds.Race;
 import com.nicholasnassar.imbabuilds.adapter.EntryAdapter;
@@ -65,7 +66,7 @@ public class MatchupSectionFragment extends ListFragment implements UpdatableLis
 	}
 
 	public void updateListView(){
-		items = Race.getItems(getRace(), getOpponent());
+		items = ((MainApplication) getActivity().getApplication()).getBuilds(Race.getMatchup(getRace(), getOpponent()));
 
 		if (!items.isEmpty()){
 			((View) getView().findViewById(R.id.progressBar)).setVisibility(View.INVISIBLE);

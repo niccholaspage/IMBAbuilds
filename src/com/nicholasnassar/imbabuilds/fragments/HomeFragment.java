@@ -3,6 +3,7 @@ package com.nicholasnassar.imbabuilds.fragments;
 import java.util.ArrayList;
 
 import com.nicholasnassar.imbabuilds.MainActivity;
+import com.nicholasnassar.imbabuilds.MainApplication;
 import com.nicholasnassar.imbabuilds.R;
 import com.nicholasnassar.imbabuilds.Race;
 import com.nicholasnassar.imbabuilds.adapter.EntryAdapter;
@@ -53,7 +54,7 @@ public class HomeFragment extends Fragment implements UpdatableListFragment {
 	}
 
 	public void updateListView(){
-		final ArrayList<Item> items = Race.getLatestBuilds();
+		final ArrayList<Item> items = ((MainApplication) getActivity().getApplication()).getLatestBuilds();
 
 		if (!items.isEmpty()){
 			((View) getView().findViewById(R.id.progressBar)).setVisibility(View.INVISIBLE);
@@ -66,9 +67,7 @@ public class HomeFragment extends Fragment implements UpdatableListFragment {
 			public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 				Item item = items.get(position);
 
-				Race[] races = Race.getRacesFromMatchup(item.getText());
-
-				ArrayList<Item> items = Race.getItems(races[0], races[1]);
+				ArrayList<Item> items = ((MainApplication) getActivity().getApplication()).getBuilds(item.getText());
 
 				String itemName = item.getTitle().substring(item.getTitle().indexOf(" ") + 1);
 
