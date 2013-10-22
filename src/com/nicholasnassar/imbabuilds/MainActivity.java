@@ -184,7 +184,7 @@ public class MainActivity extends FragmentActivity {
 		}
 	}
 
-	private void showAds(){
+	public void showAds(){
 		LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
 
 		if (!isPro() && contentView.findViewById(R.id.adView) == null){
@@ -194,13 +194,23 @@ public class MainActivity extends FragmentActivity {
 		}
 	}
 
-	private void removeAds(){
+	public void removeAds(){
 		LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
 
+		if (contentView == null){
+			return;
+		}
+		
 		contentView.removeView(contentView.findViewById(R.id.adView));
 	}
 	
 	private boolean isPro(){
+		SharedPreferences preferences = getPreferences(MODE_PRIVATE);
+		
+		if (preferences.getBoolean("freeproversion", false)){
+			return true;
+		}
+		
 		return getPackageManager().checkSignatures(getPackageName(), "com.nicholasnassar.imbabuildsprounlocker") == PackageManager.SIGNATURE_MATCH;
 	}
 

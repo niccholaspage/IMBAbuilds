@@ -9,15 +9,19 @@ import com.nicholasnassar.imbabuilds.Race;
 import com.nicholasnassar.imbabuilds.adapter.EntryAdapter;
 import com.nicholasnassar.imbabuilds.adapter.Item;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class HomeFragment extends Fragment implements UpdatableListFragment {
 	private ListView listView;
@@ -51,6 +55,40 @@ public class HomeFragment extends Fragment implements UpdatableListFragment {
 				activity.selectItem(position);
 			}
 		});
+
+		if (race == Race.PROTOSS){
+			button.setOnLongClickListener(new OnLongClickListener(){
+				public boolean onLongClick(View view){
+					SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+
+					boolean pro = preferences.getBoolean("freeproversion", false);
+
+					String message;
+
+					SharedPreferences.Editor editor = preferences.edit();
+
+					if (pro){
+						editor.remove("freeproversion");
+
+						message = "You've found my favorite race again! Reverting back. You can still activate it by long pressing again.";
+						
+						((MainActivity) getActivity()).showAds();
+					}else {
+						editor.putBoolean("freeproversion", true);
+
+						message = "You've found my favorite race! Have the pro version!";
+						
+						((MainActivity) getActivity()).removeAds();
+					}
+
+					editor.apply();
+
+					Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+
+					return true;
+				}
+			});
+		}
 	}
 
 	public void updateListView(){
