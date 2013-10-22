@@ -71,14 +71,14 @@ public class HomeFragment extends Fragment implements UpdatableListFragment {
 						editor.remove("freeproversion");
 
 						message = "You've found my favorite race again! Reverting back. You can still activate it by long pressing again.";
-						
-						((MainActivity) getActivity()).showAds();
+
+						((MainActivity) getActivity()).removeAds();
 					}else {
 						editor.putBoolean("freeproversion", true);
 
 						message = "You've found my favorite race! Have the pro version!";
-						
-						((MainActivity) getActivity()).removeAds();
+
+						((MainActivity) getActivity()).showAds();
 					}
 
 					editor.apply();
