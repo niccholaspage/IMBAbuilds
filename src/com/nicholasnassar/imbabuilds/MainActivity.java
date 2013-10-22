@@ -196,10 +196,6 @@ public class MainActivity extends FragmentActivity {
 
 	public void removeAds(){
 		LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
-
-		if (contentView == null){
-			return;
-		}
 		
 		contentView.removeView(contentView.findViewById(R.id.adView));
 	}
