@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 public class BuildFragment extends Fragment implements TitledFragment {
@@ -63,7 +64,13 @@ public class BuildFragment extends Fragment implements TitledFragment {
 		if (savedInstanceState == null){
 			text = parseText(text);
 
-			webView.loadData(text, "text/html", null);
+			WebSettings settings = webView.getSettings();
+			
+			settings.setDefaultTextEncodingName("utf-8");
+			
+			webView.loadDataWithBaseURL(null, text, "text/html", "utf-8", null);
+			
+			//webView.loadData(text, "text/html", null);
 		}else {
 			webView.restoreState(savedInstanceState);
 		}

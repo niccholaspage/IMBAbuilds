@@ -2,27 +2,37 @@ package com.nicholasnassar.imbabuilds;
 
 import com.nicholasnassar.imbabuilds.fragments.SettingsFragment;
 
+import android.annotation.TargetApi;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.view.MenuItem;
 
 public class SettingsActivity extends PreferenceActivity {
+	@SuppressWarnings("deprecation")
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	public void onCreate(Bundle savedInstanceState){
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 		if (preferences.getBoolean("night_mode", false)){
-			setTheme(android.R.style.Theme_Holo);
+			//setTheme(android.R.style.Theme_Holo);
 		}else {
-			setTheme(android.R.style.Theme_Holo_Light_DarkActionBar);
+			//setTheme(android.R.style.Theme_Holo_Light_DarkActionBar);
 		}
 
 		super.onCreate(savedInstanceState);
 
-		getActionBar().setDisplayHomeAsUpEnabled(true);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
+			getActionBar().setDisplayHomeAsUpEnabled(true);
 
-		getFragmentManager().beginTransaction().replace(android.R.id.content, new SettingsFragment()).commit();
+			getFragmentManager().beginTransaction().replace(android.R.id.content, new SettingsFragment()).commit();
+		}else {
+			addPreferencesFromResource(R.xml.preferences);
+
+			getPreferenceScreen().removePreference(findPreference("night_mode"));
+		}
 	}
 
 	@Override

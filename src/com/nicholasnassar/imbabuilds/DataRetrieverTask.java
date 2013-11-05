@@ -52,7 +52,7 @@ public class DataRetrieverTask extends AsyncTask<Void, Void, JSONObject> {
 
 				data = getFileContents(dataFile);
 
-				if (newVersion != null && !newVersion.isEmpty() && !currentVersion.equals(newVersion)) {
+				if (newVersion != null && newVersion.length() > 0 && !currentVersion.equals(newVersion)) {
 					data = downloadAndReplaceFile(dataFile, DATA_URL);
 
 					downloadAndReplaceFile(versionFile, VERSION_URL);

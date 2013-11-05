@@ -9,6 +9,7 @@ import com.nicholasnassar.imbabuilds.fragments.RaceFragment;
 import com.nicholasnassar.imbabuilds.fragments.TitledFragment;
 import com.nicholasnassar.imbabuilds.fragments.UpdatableListFragment;
 
+import android.annotation.TargetApi;
 import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -20,6 +21,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.TransitionDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -63,6 +65,7 @@ public class MainActivity extends FragmentActivity {
 
 	private AlertDialog dialog = null;
 
+	@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -70,16 +73,18 @@ public class MainActivity extends FragmentActivity {
 		SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 		if (preferences.getBoolean("night_mode", false)){
-			setTheme(android.R.style.Theme_Holo);
+			//setTheme(android.R.style.Theme_Holo);
 		}else {
-			setTheme(android.R.style.Theme_Holo_Light_DarkActionBar);
+			//setTheme(android.R.style.Theme_Holo_Light_DarkActionBar);
 		}
 
 		setContentView(R.layout.activity_main);
 
-		final ActionBar actionBar = getActionBar();
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			final ActionBar actionBar = getActionBar();
 
-		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+			actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+		}
 
 		mTitle = mDrawerTitle = getString(R.string.app_name);
 
@@ -131,7 +136,9 @@ public class MainActivity extends FragmentActivity {
 					setTitle(options[position]);
 				}
 
-				invalidateOptionsMenu();
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+					invalidateOptionsMenu();
+				}
 
 				if (fragment instanceof BlankFragment){
 					replaceFragment();
@@ -143,9 +150,11 @@ public class MainActivity extends FragmentActivity {
 			}
 
 			public void onDrawerOpened(View drawerView) {
-				getActionBar().setTitle(mDrawerTitle);
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
+					getActionBar().setTitle(mDrawerTitle);
 
-				invalidateOptionsMenu();
+					invalidateOptionsMenu();
+				}
 
 				if (!isInLowerLevelFragment() && mDrawer.getCheckedItemPosition() != -1){
 					lastItem = mDrawer.getCheckedItemPosition();
@@ -156,8 +165,14 @@ public class MainActivity extends FragmentActivity {
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 
-		actionBar.setDisplayHomeAsUpEnabled(true);
-		actionBar.setHomeButtonEnabled(true);
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
+			getActionBar().setDisplayHomeAsUpEnabled(true);
+		}
+
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH){
+			getActionBar().setHomeButtonEnabled(true);
+		}
 
 		if (savedInstanceState == null) {
 			selectItem(0);
@@ -187,26 +202,24 @@ public class MainActivity extends FragmentActivity {
 	public void showAds(){
 		LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
 
-		if (!isPro() && contentView.findViewById(R.id.adView) == null){
-			View view = getLayoutInflater().inflate(R.layout.ad, null, false);
-
-			contentView.addView(view);
+		if (!isPro()){
+			contentView.findViewById(R.id.adView).setVisibility(View.VISIBLE);
 		}
 	}
 
 	public void removeAds(){
 		LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
-		
-		contentView.removeView(contentView.findViewById(R.id.adView));
+
+		contentView.findViewById(R.id.adView).setVisibility(View.GONE);
 	}
-	
+
 	private boolean isPro(){
 		SharedPreferences preferences = getPreferences(MODE_PRIVATE);
-		
+
 		if (preferences.getBoolean("freeproversion", false)){
 			return true;
 		}
-		
+
 		return getPackageManager().checkSignatures(getPackageName(), "com.nicholasnassar.imbabuildsprounlocker") == PackageManager.SIGNATURE_MATCH;
 	}
 
@@ -223,7 +236,7 @@ public class MainActivity extends FragmentActivity {
 		if (status == ERROR){
 			showAlert();
 		}
-		
+
 		if (!isPro()){
 			showAds();
 		}else {
@@ -246,7 +259,12 @@ public class MainActivity extends FragmentActivity {
 		return (fragment instanceof TitledFragment) && ((TitledFragment) fragment).isLowerLevel();
 	}
 
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	private void changeColor(int newColor) {
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+			return;
+		}
+
 		Drawable colorDrawable = new ColorDrawable(newColor);
 
 		Drawable bottomDrawable = getResources().getDrawable(R.drawable.actionbar_bottom);
@@ -299,6 +317,7 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	private Drawable.Callback drawableCallback = new Drawable.Callback() {
+		@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 		@Override
 		public void invalidateDrawable(Drawable who) {
 			getActionBar().setBackgroundDrawable(who);
@@ -410,9 +429,11 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	public void selectItem(int position, boolean boot) {
-		mDrawer.setItemChecked(position, true);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			calculateColor(position);
+		}
 
-		calculateColor(position);
+		mDrawer.setItemChecked(position, true);
 
 		if (boot){
 			replaceFragment();
@@ -451,20 +472,26 @@ public class MainActivity extends FragmentActivity {
 		return fragment;
 	}
 
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public void setTitle(CharSequence title) {
 		mTitle = title;
 
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
+			return;
+		}
+
 		getActionBar().setTitle(title);
 	}
 
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
 
 		mDrawerToggle.syncState();
 
-		if (mDrawerLayout.isDrawerOpen(mDrawer)){
+		if (mDrawerLayout.isDrawerOpen(mDrawer) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
 			getActionBar().setTitle(mDrawerTitle);
 		}
 	}
