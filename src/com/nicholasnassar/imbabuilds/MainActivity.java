@@ -429,11 +429,11 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	public void selectItem(int position, boolean boot) {
+		mDrawer.setItemChecked(position, true);
+		
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			calculateColor(position);
 		}
-
-		mDrawer.setItemChecked(position, true);
 
 		if (boot){
 			replaceFragment();
