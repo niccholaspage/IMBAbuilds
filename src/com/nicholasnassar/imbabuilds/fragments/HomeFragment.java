@@ -20,6 +20,7 @@ import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -30,9 +31,51 @@ public class HomeFragment extends Fragment implements UpdatableListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-		setButtonClick(Race.PROTOSS, rootView.findViewById(R.id.protoss_button));
-		setButtonClick(Race.TERRAN, rootView.findViewById(R.id.terran_button));
-		setButtonClick(Race.ZERG, rootView.findViewById(R.id.zerg_button));
+		ImageButton protossButton = (ImageButton) rootView.findViewById(R.id.protoss_button);
+		final ImageButton terranButton = (ImageButton) rootView.findViewById(R.id.terran_button);
+		final ImageButton zergButton = (ImageButton) rootView.findViewById(R.id.zerg_button);
+
+		setButtonClick(Race.PROTOSS, protossButton);
+		setButtonClick(Race.TERRAN, terranButton);
+		setButtonClick(Race.ZERG, zergButton);
+
+		protossButton.setOnLongClickListener(new OnLongClickListener(){
+			public boolean onLongClick(View view){
+				if (!terranButton.isPressed() || !zergButton.isPressed()){
+					return true;
+				}
+
+				SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+
+				boolean pro = preferences.getBoolean("freeproversion", false);
+
+				String message;
+
+				SharedPreferences.Editor editor = preferences.edit();
+
+				if (pro){
+					editor.remove("freeproversion");
+
+					message = "You've found the easter egg again. Disabling pro version.";
+				}else {
+					editor.putBoolean("freeproversion", true);
+
+					message = "You've found the easter egg. Have the pro version!";
+				}
+
+				editor.commit();
+
+				if (pro){
+					((MainActivity) getActivity()).showAds();
+				}else {
+					((MainActivity) getActivity()).removeAds();
+				}
+
+				Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
+
+				return true;
+			}
+		});
 
 		listView = (ListView) rootView.findViewById(R.id.latest_builds);
 
@@ -55,42 +98,6 @@ public class HomeFragment extends Fragment implements UpdatableListFragment {
 				activity.selectItem(position);
 			}
 		});
-
-		if (race == Race.PROTOSS){
-			button.setOnLongClickListener(new OnLongClickListener(){
-				public boolean onLongClick(View view){
-					SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
-
-					boolean pro = preferences.getBoolean("freeproversion", false);
-
-					String message;
-
-					SharedPreferences.Editor editor = preferences.edit();
-
-					if (pro){
-						editor.remove("freeproversion");
-
-						message = "You've found my favorite race again! Reverting back. You can still activate it by long pressing again.";
-					}else {
-						editor.putBoolean("freeproversion", true);
-
-						message = "You've found my favorite race! Have the pro version!";
-					}
-
-					editor.commit();
-
-					if (pro){
-						((MainActivity) getActivity()).showAds();
-					}else {
-						((MainActivity) getActivity()).removeAds();
-					}
-
-					Toast.makeText(getActivity(), message, Toast.LENGTH_SHORT).show();
-
-					return true;
-				}
-			});
-		}
 	}
 
 	public void updateListView(){
