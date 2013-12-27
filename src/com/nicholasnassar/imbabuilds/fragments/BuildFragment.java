@@ -1,5 +1,8 @@
 package com.nicholasnassar.imbabuilds.fragments;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import com.nicholasnassar.imbabuilds.R;
 import com.nicholasnassar.imbabuilds.adapter.Item;
 
@@ -72,7 +75,11 @@ public class BuildFragment extends Fragment implements TitledFragment {
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 				webView.loadData(text, "text/html", null);
 			} else {
-				webView.loadDataWithBaseURL(null, text, "text/html", "utf-8", null);
+				try {
+					webView.loadData(URLEncoder.encode(text, "utf-8").replaceAll("\\+"," "), "text/html", "utf-8");
+				} catch (UnsupportedEncodingException e) {
+					e.printStackTrace();
+				}
 			}
 		}else {
 			webView.restoreState(savedInstanceState);
