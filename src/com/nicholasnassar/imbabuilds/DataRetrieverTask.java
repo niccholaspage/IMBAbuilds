@@ -8,6 +8,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -16,11 +18,10 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.nicholasnassar.imbabuilds.adapter.Item;
-import com.nicholasnassar.imbabuilds.parser.LatestBuildsParser;
-import com.nicholasnassar.imbabuilds.parser.MatchupJSONParser;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -41,7 +42,7 @@ public class DataRetrieverTask extends AsyncTask<Void, Void, JSONObject> {
 		File dataFile = new File(activity.get().getCacheDir(), "data.json");
 
 		File versionFile = new File(activity.get().getCacheDir(), "data.version");
-		
+
 		try {
 			String data = "";
 
@@ -66,9 +67,9 @@ public class DataRetrieverTask extends AsyncTask<Void, Void, JSONObject> {
 			return new JSONObject(data);
 		} catch (Exception e) {
 			dataFile.delete();
-			
+
 			versionFile.delete();
-			
+
 			return null;
 		}
 	}
@@ -85,7 +86,7 @@ public class DataRetrieverTask extends AsyncTask<Void, Void, JSONObject> {
 
 				items.clear();
 
-				items.addAll(new LatestBuildsParser().parse(array).getItems());
+				items.addAll(getLatestBuilds(array));
 
 				for (Race race : Race.values()){
 					for (Race opponent : Race.values()){
@@ -97,16 +98,16 @@ public class DataRetrieverTask extends AsyncTask<Void, Void, JSONObject> {
 
 						items.clear();
 
-						items.addAll(new MatchupJSONParser().parse(array, race).getItems());
+						items.addAll(getMatchupItems(array, race));
 					}
 				}
 			}else {
 				throw new Exception();
 			}
 		} catch (Exception e){
-			
+
 		}
-		
+
 		((MainActivity) activity.get()).updateBuilds();
 	}
 
@@ -185,8 +186,54 @@ public class DataRetrieverTask extends AsyncTask<Void, Void, JSONObject> {
 			return null;
 		}
 	}
-	
+
 	public void setActivity(Activity activity){
 		this.activity = new WeakReference<Activity>(activity);
+	}
+
+	public List<Item> getLatestBuilds(JSONArray array) throws JSONException {
+		List<Item> items = new ArrayList<Item>();
+
+		items.add(new Item("Latest Builds", null, -1, true));
+
+		for (int i = 0; i < array.length(); i++){
+			String item = array.getString(i);
+
+			Race race = Race.getRaceFromFirstLetter(item.substring(0, 1));
+
+			items.add(new Item(item, item.split(" ")[0], race.getColor(), false));
+		}
+
+		return items;
+	}
+
+	public List<Item> getMatchupItems(JSONArray array, Race race) throws JSONException {
+		List<Item> items = new ArrayList<Item>();
+
+		for (int i = 0; i < array.length(); i++){
+			JSONObject raceCategory = array.getJSONObject(i);
+
+			Iterator<?> raceCategoryIterator = raceCategory.keys();
+
+			while (raceCategoryIterator.hasNext()){
+				String key = raceCategoryIterator.next().toString();
+
+				items.add(new Item(key, null, -1, true));
+
+				JSONArray buildCategory = raceCategory.getJSONArray(key);
+
+				for (int j = 0; j < buildCategory.length(); j++){
+					String title = buildCategory.getJSONObject(j).getString("title");
+
+					String text = buildCategory.getJSONObject(j).getString("text");
+
+					Item item = new Item(title, text, race.getColor(), false);
+
+					items.add(item);
+				}
+			}
+		}
+
+		return items;
 	}
 }
