@@ -15,16 +15,14 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <com.google.ads.AdView
+        <com.google.android.gms.ads.AdView
             xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
             android:id="@+id/adView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             ads:adSize="BANNER"
-            ads:adUnitId="a152647fc7b69cd"
-            ads:loadAdOnCreate="true"
-            ads:testDevices="TEST_EMULATOR, TEST_DEVICE_ID" />
+            ads:adUnitId="a152647fc7b69cd" />
     </LinearLayout>
 
     <!-- The navigation drawer -->

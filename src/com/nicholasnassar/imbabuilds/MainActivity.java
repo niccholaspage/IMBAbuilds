@@ -1,5 +1,7 @@
 package com.nicholasnassar.imbabuilds;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.nicholasnassar.imbabuilds.adapter.DrawerArrayAdapter;
 import com.nicholasnassar.imbabuilds.adapter.Item;
 import com.nicholasnassar.imbabuilds.fragments.BlankFragment;
@@ -203,7 +205,11 @@ public class MainActivity extends FragmentActivity {
 		LinearLayout contentView = (LinearLayout) findViewById(R.id.content);
 
 		if (!isPro()){
-			contentView.findViewById(R.id.adView).setVisibility(View.VISIBLE);
+			AdView view = (AdView) contentView.findViewById(R.id.adView);
+
+			view.setVisibility(View.VISIBLE);
+
+			view.loadAd(new AdRequest.Builder().build());
 		}
 	}
 
@@ -430,7 +436,7 @@ public class MainActivity extends FragmentActivity {
 
 	public void selectItem(int position, boolean boot) {
 		mDrawer.setItemChecked(position, true);
-		
+
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			calculateColor(position);
 		}
