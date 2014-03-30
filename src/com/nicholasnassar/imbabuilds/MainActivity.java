@@ -113,7 +113,9 @@ public class MainActivity extends FragmentActivity {
 		//TODO: Implement Guides:
 		//options[i + 1] = "Guides";
 
-		mDrawer.setAdapter(new DrawerArrayAdapter(this, R.layout.drawer_list_item, options));
+		DrawerArrayAdapter adapter = new DrawerArrayAdapter(this, R.layout.drawer_list_item, options);
+
+		mDrawer.setAdapter(adapter);
 
 		mDrawer.setOnItemClickListener(new DrawerItemClickListener());
 
@@ -426,6 +428,8 @@ public class MainActivity extends FragmentActivity {
 	private class DrawerItemClickListener implements ListView.OnItemClickListener {
 		@Override
 		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+			((DrawerArrayAdapter) mDrawer.getAdapter()).setPosition(position);
+
 			selectItem(position, false);
 		}
 	}

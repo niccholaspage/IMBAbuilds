@@ -33,10 +33,11 @@ public class RaceFragment extends Fragment {
 		super.onViewCreated(view, savedInstanceState);
 
 		tabs = (PagerSlidingTabStrip) view.findViewById(R.id.tabs);
+
 		pager = (ViewPager) view.findViewById(R.id.pager);
 
-		final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
-				.getDisplayMetrics());
+		final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics());
+
 		pager.setPageMargin(pageMargin);
 
 		adapter = new MatchupPagerAdapter(getChildFragmentManager(), getRace());
